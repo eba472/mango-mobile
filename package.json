@@ -1,0 +1,26 @@
+{
+  "name": "mango-mobile",
+  "version": "1.0.0",
+  "description": "<h2 align=\"center\">Mango dictionary</h2>",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eba472/mango-mobile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eba472/mango-mobile/issues"
+  },
+  "homepage": "https://github.com/eba472/mango-mobile#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
