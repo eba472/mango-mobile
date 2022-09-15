@@ -1,29 +1,32 @@
 const express = require('express')
+const { getData, getDataById, deleteData, addOrUpdate } = require('./dynamo')
 const app = express()
 const port = 3000
 
-const dict = [
-  {
-    "en": "search",
-    "mn": "haih"
-  },
-  {
-    "en": "paper",
-    "mn": "tsaas"
-  }
-]
 app.get('/', (req, res) => {
   res.send('hello!')
 })
 
-app.get('/dict', (req, res) => {
-  const enWord = req.query.en
-  const result = dict.filter(obj => obj["en"] == enWord)[0]
-  if (!result) {
-    res.status(404).send("You are doomed!")
+app.get('/mock_data', async (req, res) => {
+  try {
+    const mockData = await getData();
+    res.json(mockData)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({'error': 'Someting went wrong'})
   }
-  res.send(result)
-})
+});
+
+app.get('/mock_data/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const mockData = await getDataById(id);
+    res.json(mockData)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({'error': 'Someting went wrong'})
+  }
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
