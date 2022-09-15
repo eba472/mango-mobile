@@ -20,6 +20,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
+  flutter: '>=3.3.0'
   sdk: '>=2.18.0 <3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
@@ -31,6 +32,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+ # search_page: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -40,7 +42,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
