@@ -7,12 +7,10 @@
         "filling or capable of filling a large volume or several volumes"
     ],
     "type": "adjective",
-    "prs": [
-        {
-            "mw": "vəˈluː.mə.nəs",
-            "audio": "volumi02"
-        }
-    ],
+    "prs": {
+        "mw": "vəˈluː.mə.nəs",
+        "audio": "volumi02"
+    },
     "examples": [
         "the building\u0027s high ceilings and {it}voluminous{\/it} spaces",
         "a writer of {it}voluminous{\/it} output"

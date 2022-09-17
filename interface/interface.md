@@ -14,15 +14,15 @@ ex: localhost:8080/dict/en/voluminous
 
 Fields:
 
-| Name      | Type     | Merriam Webster | Description                         |
-| :-------- | :------- | :-------------- | :---------------------------------- |
-| word      | String   |                 | Searched  word                      |
-| mnDef     | String   |                 | Word definition in Mongolian        |
-| enDef[]   | String[] | shortDef        | Several word definition in English  |
-| prs       | Object[] | hwi.prs         |                                     |
+| Name      | Type     | Merriam Webster | Description                            |
+| :-------- | :------- | :-------------- | :------------------------------------- |
+| word      | String   |                 | Searched  word                         |
+| mnDef     | String   |                 | Word definition in Mongolian           |
+| enDef[]   | String[] | shortDef        | Several word definition in English     |
+| prs       | Object   | hwi.prs[0]      |                                        |
 | prs.mw    | String   | hwi.prs.mw      | Phonetic spelling :  vəˈluː.mə.nəs etc |
-| prs.audio | String   | hwi.prs.audio   | Pronunciation audio location        |
-| examples  | String[] | suppl.examples  | Example sentences                   |
+| prs.audio | String   | hwi.prs.audio   | Pronunciation audio location           |
+| examples  | String[] | suppl.examples  | Example sentences                      |
  
 
 
