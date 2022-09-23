@@ -1,7 +1,7 @@
 
 
 # English to Mongolian dictionary
-## HTTP POST {base_url}/dict/en/{word}
+## HTTP GET {base_url}/dict/en/{word}
 ex: localhost:8080/dict/en/voluminous
 
 ### Response status
