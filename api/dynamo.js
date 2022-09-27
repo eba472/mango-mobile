@@ -9,6 +9,15 @@ AWS.config.update({
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = "mango_dict_mock_data";
+const NEW_TABLE_NAME = "en-mn-dict";
+
+const getMonDefByEng = async (en) => {
+    const params = {
+        TableName: NEW_TABLE_NAME,
+        Key: { en }
+    };
+    return await dynamoClient.get(params).promise();
+};
 
 const getData = async () => {
     const params = {
@@ -54,6 +63,7 @@ module.exports = {
     addOrUpdate,
     getDataById,
     deleteData,
+    getMonDefByEng
 };
 
 // getData();
@@ -65,9 +75,9 @@ const mockData = {
     // "mn": "хайх"
     // },
     // {
-    "id": "2",
-    "en": "close",
-    "mn": "хаах"
+    // "id": "2",
+    // "en": "close",
+    // "mn": "хаах"
     // }
 };
 

@@ -1,6 +1,7 @@
 const serverless = require('serverless-http')
 const express = require('express')
 const { getData, getDataById } = require('./dynamo')
+const { getMnDef } = require('./utils')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 const app = express()
@@ -43,7 +44,7 @@ app.get('/dict/en/:word', async (req, res) => {
   const mwRes = await axios.get(url);
   const respData = {}
   respData["word"] = word
-  respData["mnDef"] = "hehe" //TODO: Get data from database soon.
+  respData["mnDef"] = await getMnDef(word)
   respData["enDef"] = mwRes.data[0].shortdef
   respData["prs"] = mwRes.data[0].hwi
   respData["examples"] = [] //TODO: Examples will be array of strings.
@@ -51,7 +52,7 @@ app.get('/dict/en/:word', async (req, res) => {
   res.end(JSON.stringify(respData));
 });
 
-module.exports.handler = serverless(app);
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
+// module.exports.handler = serverless(app);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
