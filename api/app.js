@@ -1,3 +1,4 @@
+const serverless = require('serverless-http')
 const express = require('express')
 const { getData, getDataById } = require('./dynamo')
 const bodyParser = require('body-parser')
@@ -50,6 +51,7 @@ app.get('/dict/en/:word', async (req, res) => {
   res.end(JSON.stringify(respData));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+module.exports.handler = serverless(app);
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
