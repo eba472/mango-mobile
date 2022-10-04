@@ -1,16 +1,16 @@
-# Magno Eng-Mon Dictionary
+# Mango Eng-Mon Dictionary
+- Will be finest dictionary on the market
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
+## Followed this tutorial
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## To run flutter app:
+- [Flutter instillation guide](https://docs.flutter.dev/get-started/install/macos)
+  - You don't need to install Android studio or Xcode.
+  - you can test the app with browser.
+- Make sure you installed flutter by running `flutter doctor`
+- `flutter run` 
+- Choose `[2]: Chrome (chrome)` 
