@@ -69,6 +69,7 @@ class SearchPage<T> extends SearchDelegate<T?> {
   final SortCallback<T>? sort;
 
   SearchPage({
+
     this.suggestion = const SizedBox(),
     this.failure = const SizedBox(),
     required this.builder,
@@ -81,7 +82,7 @@ class SearchPage<T> extends SearchDelegate<T?> {
     this.itemEndsWith = false,
     this.onQueryUpdate,
     this.searchStyle,
-    this.sort,
+    this.sort, 
   }) : super(
           searchFieldLabel: searchLabel,
           searchFieldStyle: searchStyle,
@@ -91,6 +92,9 @@ class SearchPage<T> extends SearchDelegate<T?> {
   ThemeData appBarTheme(BuildContext context) {
     return barTheme ??
         Theme.of(context).copyWith(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+          ),
           textTheme: Theme.of(context).textTheme.copyWith(
                 headline6: TextStyle(
                   color: Theme.of(context).primaryTextTheme.headline6?.color,
@@ -108,8 +112,9 @@ class SearchPage<T> extends SearchDelegate<T?> {
             enabledBorder: InputBorder.none,
             errorBorder: InputBorder.none,
             border: InputBorder.none,
+            
           ),
-              
+            
         );
   }
 

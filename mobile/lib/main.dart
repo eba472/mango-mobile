@@ -78,7 +78,8 @@ class MyHomePage extends StatelessWidget {
             ],
             builder: (word_s) => ListTile(
               title: Text(word_s.chars),
-            ),
+            ), 
+            
           ),
         ),
         child: const Icon(Icons.search),
