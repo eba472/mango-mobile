@@ -109,6 +109,7 @@ class SearchPage<T> extends SearchDelegate<T?> {
             errorBorder: InputBorder.none,
             border: InputBorder.none,
           ),
+              
         );
   }
 
