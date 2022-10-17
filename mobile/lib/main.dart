@@ -45,6 +45,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text('Search Page'),
       ),
       body: ListView.builder(
@@ -77,7 +78,8 @@ class MyHomePage extends StatelessWidget {
             ],
             builder: (word_s) => ListTile(
               title: Text(word_s.chars),
-            ),
+            ), 
+            
           ),
         ),
         child: const Icon(Icons.search),
