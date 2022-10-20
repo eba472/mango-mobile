@@ -47,7 +47,6 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        elevation: 0.0,
         centerTitle: true,
         title: Text(
           'Home page',
@@ -63,18 +62,6 @@ class MyHomePage extends StatelessWidget {
         width: 300.0,
         height: 20.0,
         child: FloatingActionButton(
-          // hoverElevation: 10,
-          // children: <Widget>[
-          //   SizedBox(height: 15.0),
-          //   Text(
-          //     'Flash cards',
-          //     style: GoogleFonts.acme(
-          //       textStyle: Theme.of(context).textTheme.headline4,
-          //       color: Color.fromARGB(255, 204, 105, 39),
-          //       fontSize: 24.0,
-          //     ),
-          //   ),
-          // ],
           onPressed: () {},
           child: ElevatedButton(
             child: Text(
