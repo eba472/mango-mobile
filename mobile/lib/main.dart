@@ -1,10 +1,9 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:mobile/search_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-/// This is a very simple class, used to
-/// demo the `SearchPage` package
 class Words implements Comparable<Words> {
   final String chars;
 
@@ -33,10 +32,12 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   static const word = [
-    Words('Dad'),
-    Words('Mum'),
+    Words('Father'),
+    Words('Mother'),
     Words('Sister'),
     Words('Brother'),
+    Words('Dog'),
+    Words('Apple'),
   ];
 
   const MyHomePage({super.key});
@@ -46,19 +47,40 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Search Page'),
+        centerTitle: true,
+        title: Text(
+          'Home page',
+          style: GoogleFonts.acme(
+            textStyle: Theme.of(context).textTheme.headline4,
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 20.0,
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: word.length,
-        itemBuilder: (context, index) {
-          final word_s = word[index];
-
-          return ListTile(
-            title: Text(word_s.chars),
-            subtitle: Text('Explanation'),
-          );
-        },
-      ),
+      body: Center(
+          child: SizedBox(
+        width: 300.0,
+        height: 20.0,
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: ElevatedButton(
+            child: Text(
+              'Flash cards',
+              style: GoogleFonts.acme(
+                textStyle: TextStyle(color: Colors.blue, letterSpacing: .5),
+                color: const Color.fromARGB(255, 255, 255, 255),
+                fontSize: 16.0,
+              ),
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const FlashCards()),
+              );
+            },
+          ),
+        ),
+      )),
       floatingActionButton: FloatingActionButton(
         tooltip: 'Search words',
         onPressed: () => showSearch(
@@ -73,16 +95,50 @@ class MyHomePage extends StatelessWidget {
             failure: const Center(
               child: Text('No way :('),
             ),
-            filter: (word_s) => [
-              word_s.chars,
+            filter: (wordS) => [
+              wordS.chars,
             ],
-            builder: (word_s) => ListTile(
-              title: Text(word_s.chars),
-            ), 
-            
+            builder: (wordS) => ListTile(
+              title: Text(wordS.chars),
+            ),
           ),
         ),
         child: const Icon(Icons.search),
+      ),
+    );
+  }
+}
+
+class FlashCards extends StatelessWidget {
+  const FlashCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Flash Card',
+          style: GoogleFonts.acme(
+            textStyle: Theme.of(context).textTheme.headline4,
+            color: const Color.fromARGB(255, 255, 255, 255),
+            fontSize: 20.0,
+          ),
+        ),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Go back!',
+            style: GoogleFonts.acme(
+              textStyle: Theme.of(context).textTheme.headline4,
+              color: const Color.fromARGB(255, 255, 255, 255),
+              fontSize: 16.0,
+            ),
+          ),
+        ),
       ),
     );
   }
