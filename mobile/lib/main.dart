@@ -78,6 +78,9 @@ class MyHomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const FlashCards()),
               );
             },
+            style: ElevatedButton.styleFrom(
+              primary: Colors.black
+            ),
           ),
         ),
       )),
@@ -116,6 +119,8 @@ class FlashCards extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
+        centerTitle: true,
         title: Text(
           'Flash Card',
           style: GoogleFonts.acme(
@@ -137,6 +142,9 @@ class FlashCards extends StatelessWidget {
               color: const Color.fromARGB(255, 255, 255, 255),
               fontSize: 16.0,
             ),
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.black
           ),
         ),
       ),
