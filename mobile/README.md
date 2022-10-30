@@ -13,4 +13,9 @@
   - you can test the app with browser.
 - Make sure you installed flutter by running `flutter doctor`
 - `flutter run` 
-- Choose `[2]: Chrome (chrome)` 
+- Choose your output type: Android studio, Chrome etc
+
+
+## Work with Chrome
+- To start with Chrome: `flutter run -d chrome`
+- To restart: click `R` on terminal (Chrome only supports hotRestart not hotReload)

@@ -4,20 +4,12 @@ typedef SearchFilter<T> = List<String?> Function(T t);
 typedef ResultBuilder<T> = Widget Function(T t);
 typedef SortCallback<T> = int Function(T a, T b);
 
-/// This class helps to implement a search view, using [SearchDelegate].
-/// It can show suggestion & unsuccessful-search widgets.
 class SearchPage<T> extends SearchDelegate<T?> {
-  /// Set this to true to display the complete list instead of the [suggestion].
-  /// This is useful to give your users the chance to explore all the items in the
-  /// list without knowing what so search for.
+  /// true: display the complete list | false: only [suggestion]
   final bool showItemsOnEmpty;
-
-  /// Widget that is built when current query is empty.
-  /// Suggests the user what's possible to do.
+  /// when current query is empty.
   final Widget suggestion;
-
-  /// Widget built when there's no item in [items] that
-  /// matches current query.
+  /// for no match
   final Widget failure;
 
   /// Method that builds a widget for each item that matches
