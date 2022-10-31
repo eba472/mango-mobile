@@ -11,8 +11,8 @@ export const getMnDef = async (word) => {
 };
 
 export const getDataFromMerriamWebster = async (word) => {
-    const url = `https://www.dictionaryapi.com/api/v3/references/collegiate/json/${word}?key=${process.env.MW_DICT_KEY}`
-    return await get(url);
+    const learnersDictURL = `https://www.dictionaryapi.com/api/v3/references/learners/json/${word}?key=${process.env.MW_LEARNERS_DICT_KEY}`
+    return await get(learnersDictURL);
 };
 
 export const buildResponse = async (searchWord, mwRes) => {
