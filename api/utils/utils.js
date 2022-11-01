@@ -16,11 +16,16 @@ export const getDataFromMerriamWebster = async (word) => {
 };
 
 export const buildResponse = async (searchWord, mwRes) => {
+    const data = mwRes.data[0]
+    if (typeof data === 'string' || data instanceof String) {
+        return undefined
+    }
     const response = {}
     response["word"] = searchWord
     response["mnDef"] = await getMnDef(searchWord)
-    response["enDef"] = mwRes.data[0].shortdef
-    response["prs"] = mwRes.data[0].hwi
+    response["enDef"] = data.shortdef[0]
+    response["ipa"] = data.hwi.prs[0]["ipa"]
+    response["sound"] = data.hwi.prs[0]["sound"]["audio"]
     response["examples"] = [] //TODO: Examples will be array of strings.
     return response
 };

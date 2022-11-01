@@ -1,63 +1,74 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:mobile/components/home/widgets/words.dart';
+import 'package:http/http.dart' as http;
+import '../models/dict.dart';
 
 typedef SearchFilter<T> = List<String?> Function(T t);
 typedef ResultBuilder<T> = Widget Function(T t);
 typedef SortCallback<T> = int Function(T a, T b);
 
+Future<Dict> fetchDict() async {
+  final res = await http.get(Uri.parse('localhost:3000/dict/en/voluminous'));
+  if (res.statusCode == 200) {
+    return Dict.fromJson(jsonDecode(res.body));
+  } else if (res.statusCode == 404) {
+    throw Exception('Word not found,');
+  } else {
+    throw Exception('Failed to load album');
+  }
+}
+
 class SearchPage<T> extends SearchDelegate<T?> {
-  final Widget suggestion;
-  final Widget failure;
+  final Widget suggestion = const Center(
+    child: Text('Try something'),
+  );
+  final Widget failure = const Center(
+    child: Text('No way :('),
+  );
   final ResultBuilder<Words> builder;
   final SearchFilter<Words> filter;
-  final List<Words> items;
-  final ThemeData? barTheme;
-  final bool itemStartsWith;
-  final bool itemEndsWith;
-  final ValueChanged<String>? onQueryUpdate;
-  final TextStyle? searchStyle;
+  static const List<Words> items = [
+    Words('Father'),
+    Words('Mother'),
+    Words('Sister'),
+    Words('Brother'),
+    Words('Dog'),
+    Words('Apple'),
+  ];
+
+  final ValueChanged<String>? onQueryUpdate = print;
 
   SearchPage({
-    this.suggestion = const SizedBox(),
-    this.failure = const SizedBox(),
     required this.builder,
     required this.filter,
-    required this.items,
-    this.barTheme,
-    this.itemStartsWith = false,
-    this.itemEndsWith = false,
-    this.onQueryUpdate,
-    this.searchStyle,
-  }) : super(
-          searchFieldStyle: searchStyle,
-        );
+  });
 
   @override
   ThemeData appBarTheme(BuildContext context) {
-    return barTheme ??
-        Theme.of(context).copyWith(
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.black,
-          ),
-          textTheme: Theme.of(context).textTheme.copyWith(
-                headline6: TextStyle(
-                  color: Theme.of(context).primaryTextTheme.headline6?.color,
-                  fontSize: 20,
-                ),
-              ),
-          inputDecorationTheme: InputDecorationTheme(
-            hintStyle: TextStyle(
-              color: Theme.of(context).primaryTextTheme.caption?.color,
+    return Theme.of(context).copyWith(
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
+      ),
+      textTheme: Theme.of(context).textTheme.copyWith(
+            headline6: TextStyle(
+              color: Theme.of(context).primaryTextTheme.headline6?.color,
               fontSize: 20,
             ),
-            focusedErrorBorder: InputBorder.none,
-            disabledBorder: InputBorder.none,
-            focusedBorder: InputBorder.none,
-            enabledBorder: InputBorder.none,
-            errorBorder: InputBorder.none,
-            border: InputBorder.none,
           ),
-        );
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: TextStyle(
+          color: Theme.of(context).primaryTextTheme.caption?.color,
+          fontSize: 20,
+        ),
+        focusedErrorBorder: InputBorder.none,
+        disabledBorder: InputBorder.none,
+        focusedBorder: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        errorBorder: InputBorder.none,
+        border: InputBorder.none,
+      ),
+    );
   }
 
   @override
@@ -86,25 +97,6 @@ class SearchPage<T> extends SearchDelegate<T?> {
   @override
   Widget buildResults(BuildContext context) => buildSuggestions(context);
 
-  bool _filterByValue({
-    required String query,
-    required String? value,
-  }) {
-    if (value == null) {
-      return false;
-    }
-    if (itemStartsWith && itemEndsWith) {
-      return value == query;
-    }
-    if (itemStartsWith) {
-      return value.startsWith(query);
-    }
-    if (itemEndsWith) {
-      return value.endsWith(query);
-    }
-    return value.contains(query);
-  }
-
   @override
   Widget buildSuggestions(BuildContext context) {
     if (onQueryUpdate != null) onQueryUpdate!(query);
@@ -125,5 +117,15 @@ class SearchPage<T> extends SearchDelegate<T?> {
     return ListView(
       children: searchResult.map(builder).toList(),
     );
+  }
+
+  bool _filterByValue({
+    required String query,
+    required String? value,
+  }) {
+    if (value == null) {
+      return false;
+    }
+    return value.contains(query);
   }
 }

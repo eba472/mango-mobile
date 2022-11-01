@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'widgets/appbar.dart';
 import 'widgets/flashcard_button.dart';
 import 'widgets/search_button.dart';
-import 'widgets/words.dart';
 
 class MyHomePage extends StatelessWidget {
-  static const words = [
-    Words('Father'),
-    Words('Mother'),
-    Words('Sister'),
-    Words('Brother'),
-    Words('Dog'),
-    Words('Apple'),
-  ];
-
   const MyHomePage({super.key});
 
   @override
@@ -27,8 +16,6 @@ class MyHomePage extends StatelessWidget {
         body: Center(
             child:
                 SizedBox(width: 300.0, height: 20.0, child: FlashCardButton())),
-        floatingActionButton: SearchButton(
-          words: words,
-        ));
+        floatingActionButton: SearchButton());
   }
 }
