@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'widgets/appbar.dart';
-import 'widgets/flashcard_button.dart';
+import 'widgets/new_search_button.dart';
 import 'widgets/search_button.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -15,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         ),
         body: Center(
             child:
-                SizedBox(width: 300.0, height: 20.0, child: FlashCardButton())),
+                SizedBox(width: 300.0, height: 20.0, child: NewSearchButton())),
         floatingActionButton: SearchButton());
   }
 }
